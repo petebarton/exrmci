@@ -20,7 +20,7 @@
 set -e
 
 # Make sure they passed us the arguments, $1=app_name, $2=version(from git describe).
-${2:?"%%%%%%%%%%%%% Error: You must pass the app name and version as parameters to this script  %%%%%%%%%%%"}
+: ${2?"%%%%%%%%%%%%% Error: You must pass the app name and version as parameters to this script  %%%%%%%%%%%"}
 
 
 
