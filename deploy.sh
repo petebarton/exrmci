@@ -1,37 +1,49 @@
 #!/bin/bash
-# deploy
+# deploy.sh
 ##########################################################################################
-# This script deploys an elixir release on a remote (or local) server.
-# It uses ssh to run commands on the remote server.
+# This script deploys an elixir release locally.
 #
 # PREREQUISITS
-#   - there should be a /releases directory
+#   - You should have already extracted one release to the DEPLOY_ROOT_DIR.
 #   - The box that we are deploying to should have an ssh key to the build box.
 #
 #
-# The following environment variables should be set before running this script.
+# The following environment variables should be set in /exrmi/exrmci_env_vars
 # 
-# APP_ROOT =              /code/my_elixir_app
-# BUILD_USER_AND_IP =     root@10.0.0.2
-# DEPLOY_USER_AND_IP =    root@10.0.0.3
-# $GO_REVISION_APP_GIT =  root@10.0.0.3
+# APP_NAME          # my_app
+# BUILD_RELEASE_DIR # root@10.0.0.3:/my_app-releases     # NO TRAILING SLASH(/) !!!
+# DEPLOY_ROOT_DIR   # /home/joe/deploy_my_app            # NO TRAILING SLASH(/) !!!
 #
 ##########################################################################################
 
 set -e
 
+
+# Make sure we have the required arg.
+: ${1?"%%%%%%%%%%%%% Error: version (git describe) must be passed as first arg. %%%%%%%%%%%"}
+
+# Run the env_vars file.
+$(cat exrmci_env_vars)
+
+# Make sure we have the required env vars.
+: ${APP_NAME?"         %%%%%%%%%%%%% Error: ENV VAR 'APP_NAME' NOT FOUND  %%%%%%%%%%%"}
+: ${BUILD_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'REPO_PATH' NOT FOUND  %%%%%%%%%%%"}
+: ${DEPLOY_ROOT_DIR?"  %%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_ROOT' NOT FOUND  %%%%%%%%%%%"}
+
+
+
 echo ""
 echo ""
 
 echo "Start: get the release"
-  ssh -p 23 -o StrictHostKeyChecking=no $DEPLOY_USER_AND_IP "scp -r $BUILD_USER_AND_IP:/releases/$GO_REVISION_APP_GIT /releases/"
+  scp -r $BUILD_RELEASE_DIR/$APP_NAME/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/
 echo "Done:  get the release"
 
 echo ""
 
-echo "Start: run the release"
-  ssh -p 23 -o StrictHostKeyChecking=no $DEPLOY_USER_AND_IP "cd /releases && rel/$APP_NAME/bin/$APP_NAME start"
-echo "Done:  run the release"
+echo "Start: UPGRADE the release"
+  cd $DEPLOY_ROOT_DIR && ./bin/$APP_NAME upgrade $1
+echo "Done:  UPGRADE the release"
 
 # /apps/pxblog-exrm/bin/pxblog upgrade 0.0.2
 # /apps/pxblog-exrm/bin/pxblog downgrade 0.0.1

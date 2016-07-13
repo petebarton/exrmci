@@ -1,0 +1,47 @@
+
+###################################### EXAMPLE ####################################
+## APP_NAME=hopper                                                               ##
+## BUILD_RELEASE_DIR=root@10.0.0.3:/my_app-releases   # NO TRAILING SLASH(/) !!! ##
+## DEPLOY_ROOT_DIR=/home/joe/deploy_my_app/bin/my_app # NO TRAILING SLASH(/) !!! ##
+###################################################################################
+
+
+
+# The name of your app.  It is the name of the file that runs your release in the bin directory.
+#
+APP_NAME=my_app
+
+
+
+
+# The directory that you will be copying your releases from.
+# This directory should contain directories (named after your releases, e.g. 0.0.1) which
+# contain the tarbal files.  We would use 'my_app-releases' in the following example.
+#
+# my_app-releases/
+#  |
+#  |
+#  +-- 0.0.1/
+#  |   |
+#  |   +-- my_app.tar.gz
+#  |
+#  |
+#  +-- 0.0.2/
+#      |
+#      +-- my_app.tar.gz
+#  
+BUILD_RELEASE_DIR=someuser@10.0.0.1:/home/someuser/my_app-releases/  
+
+
+
+
+# The directory that you will be copying your release to.
+# This is the directory that was created when you untarred your first release.
+# It contains the automatically created 'bin'and 'releases' directories.
+# 
+DEPLOY_ROOT_DIR=/home/anotheruser/deploy-my_app/
+
+
+# END
+
+
