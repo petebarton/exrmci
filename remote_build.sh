@@ -7,6 +7,6 @@ ${2:?"%%%%%%%%%%%%% Error: You must pass the app name and version as parameters 
 
 set -e
 
-ssh -p 23 -o StrictHostKeyChecking=no $BUILD_USER_AND_IP "bash -s" -- < ./exrmci/build.sh $1 $2
+ssh -p 23 -o StrictHostKeyChecking=no $BUILD_USER_AND_IP "bash -s" -- < /exrmci/build.sh $1 $2
 
 

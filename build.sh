@@ -30,13 +30,13 @@ echo ""
 echo ""
 
 echo "******* Start:  Git pull"
-  cd /$APP_NAME && sudo git checkout master && sudo git checkout . && sudo git pull
+  cd /$1 && sudo git checkout master && sudo git checkout . && sudo git pull
 echo "******* Done:  Git pull."
 
 echo ""
 
 echo "******* Start: Git checkout correct version..."
-  git checkout master && git checkout $1
+  git checkout master && git checkout $2
 echo "******* Done:  Git checkout correct version..."
 
 echo ""
