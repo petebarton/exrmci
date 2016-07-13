@@ -7,6 +7,14 @@ ${2:?"%%%%%%%%%%%%% Error: You must pass the app name and version as parameters 
 
 set -e
 
+echo ""
+echo "***************************************************"
+echo "** Unfortunately this script is not working.     **"
+echo "** For some reason the 'mix' tasks on the remote **"
+echo "** server stop the script before completion.     **"
+echo "***************************************************"
+echo ""
+
 ssh -p 23 -o StrictHostKeyChecking=no $BUILD_USER_AND_IP "bash -s" -- < /exrmci/build.sh $1 $2
 
 

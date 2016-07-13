@@ -42,7 +42,7 @@ echo "******* Done:  Git checkout correct version..."
 echo ""
 
 echo "******* Start: install rebar"
-  mix local.rebar --force
+  mix local.rebar --force && true
 echo "******* Done:  install rebar"
 
 echo ""
