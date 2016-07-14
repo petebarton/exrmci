@@ -23,7 +23,7 @@ set -e
 : ${1?"%%%%%%%%%%%%% Error: version (git describe) must be passed as first arg. %%%%%%%%%%%"}
 
 # Run the env_vars file.
-$(cat exrmci_env_vars)
+$(cat /exrmci/exrmci_env_vars)
 
 # Make sure we have the required env vars.
 : ${APP_NAME?"         %%%%%%%%%%%%% Error: ENV VAR 'APP_NAME' NOT FOUND  %%%%%%%%%%%"}
