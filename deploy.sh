@@ -41,7 +41,7 @@ echo ""
 
 echo "Start: get the release"
   mkdir -p $DEPLOY_ROOT_DIR/$1
-  scp -r $BUILD_RELEASE_DIR/$APP_NAME/$1/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/$1/
+  scp -r $BUILD_RELEASE_DIR/$1/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/$1/
 echo "Done:  get the release"
 
 echo ""
