@@ -36,17 +36,16 @@ echo ""
 echo ""
 
 echo "Start: get the release"
-  scp -r $BUILD_RELEASE_DIR/$APP_NAME/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/
+  mkdir =p $DEPLOY_ROOT_DIR/releases/$1
+  scp -r $BUILD_RELEASE_DIR/$APP_NAME/$1/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/$1/
 echo "Done:  get the release"
 
 echo ""
 
 echo "Start: UPGRADE the release"
-  cd $DEPLOY_ROOT_DIR && ./bin/$APP_NAME upgrade $1
+  cd $DEPLOY_ROOT_DIR && ./bin/$APP_NAME upgrade  $1
 echo "Done:  UPGRADE the release"
 
-# /apps/pxblog-exrm/bin/pxblog upgrade 0.0.2
-# /apps/pxblog-exrm/bin/pxblog downgrade 0.0.1
 
 echo ""
 echo ""
@@ -55,6 +54,16 @@ exit 0
 
 
 
+
+######### EXAMPLE CODE ##########################################
+# /apps/pxblog-exrm/bin/pxblog upgrade 0.0.2
+# /apps/pxblog-exrm/bin/pxblog downgrade 0.0.1
+#    mix release
+#    mkdir -p /tmp/test/releases/0.0.2
+#    cp rel/test/releases/0.0.2/test.tar.gz /tmp/test/releases/0.0.2/
+#    cd /tmp/test
+#    bin/test upgrade "0.0.2"
+#################################################################
 
 
 

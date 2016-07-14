@@ -1,47 +1,32 @@
-
-###################################### EXAMPLE ####################################
-## APP_NAME=hopper                                                               ##
-## BUILD_RELEASE_DIR=root@10.0.0.3:/my_app-releases   # NO TRAILING SLASH(/) !!! ##
-## DEPLOY_ROOT_DIR=/home/joe/deploy_my_app/bin/my_app # NO TRAILING SLASH(/) !!! ##
-###################################################################################
-
+############################# EXAMPLE #################################
+## APP_NAME=my_app                                                   ##
+##                                                                   ##
+## BUILD_RELEASES_DIR=/home/fred/my_app_releases        # Example 1  ##
+## BUILD_RELEASES_DIR=barney@10.0.0.5:/my_app_releases  # Example 2  ##
+##                                                                   ##
+## DEPLOY_ROOT_DIR=/home/deployuser/deploy-my_app                    ##
+#######################################################################
 
 
 # The name of your app.  It is the name of the file that runs your release in the bin directory.
-#
 APP_NAME=my_app
 
 
-
-
 # The directory that you will be copying your releases from.
-# This directory should contain directories (named after your releases, e.g. 0.0.1) which
-# contain the tarbal files.  We would use 'my_app-releases' in the following example.
-#
-# my_app-releases/
-#  |
-#  |
-#  +-- 0.0.1/
-#  |   |
-#  |   +-- my_app.tar.gz
-#  |
-#  |
-#  +-- 0.0.2/
-#      |
-#      +-- my_app.tar.gz
+# This is the same directory that we copied releses to in the build process.
+# NO TRAILING SLASHES(/) !!!
 #  
-BUILD_RELEASE_DIR=someuser@10.0.0.1:/home/someuser/my_app-releases/  
+RELEASES_REPO=someuser@10.0.0.1:/home/someuser/my_app-releases  
 
 
-
-
-# The directory that you will be copying your release to.
+# The directory that you will be copying your release to on the deploy server.
 # This is the directory that was created when you untarred your first release.
 # It contains the automatically created 'bin'and 'releases' directories.
+# NO TRAILING SLASHES(/) !!!
 # 
-DEPLOY_ROOT_DIR=/home/anotheruser/deploy-my_app/
+DEPLOY_ROOT_DIR=/home/anotheruser/deploy-my_app
 
 
-# END
+# THE END
 
 
