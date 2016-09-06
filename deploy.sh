@@ -42,7 +42,7 @@ echo ""
 
 echo "Start: GET the release"
   mkdir -p $DEPLOY_RELEASE_DIR
-  scp $BUILD_RELEASE_DIR/$APP_NAME_$1.tar.gz $DEPLOY_RELEASE_DIR/
+  scp $BUILD_RELEASE_DIR/$(echo $APP_NAME)_$1.tar.gz $DEPLOY_RELEASE_DIR/
 echo "Done:  GET the release"
 
 echo ""
