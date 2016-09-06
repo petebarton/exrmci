@@ -52,12 +52,12 @@ echo "Start: UNZIP the release"
   rm -rf *
   cp $DEPLOY_RELEASE_DIR/$(echo $APP_NAME)_$1.tar.gz .
   tar -zxvf $(echo $APP_NAME)_$1.tar.gz
-  cd $DEPLOY_RELEASE_DIR/$(echo $APP_NAME)_$1
 echo "Done:  UNZIP the release"
 
 echo ""
 
 echo "Start: START the release"
+  cd $DEPLOY_ROOT_DIR
   RELX_REPLACE_OS_VARS=true ./bin/$APP_NAME start
 echo "Done:  START the release"
 
