@@ -13,8 +13,7 @@
 # APP_NAME          # my_app
 # BUILD_RELEASE_DIR # root@10.0.0.3:/my_app-releases     # NO TRAILING SLASH(/) !!!
 # DEPLOY_ROOT_DIR   # /home/joe/deploy_my_app            # NO TRAILING SLASH(/) !!!
-#
-##########################################################################################
+# ##########################################################################################
 
 set -e
 
@@ -51,7 +50,7 @@ echo "Start: UNZIP the release"
   cd $DEPLOY_ROOT_DIR
   ./bin/$APP_NAME stop || true
   rm -rf *
-  cp $DEPLOY_RELEASE_DIR/$APP_NAME_$1.tar.gz .
+  cp $DEPLOY_RELEASE_DIR/$(echo $APP_NAME)_$1.tar.gz .
   tar -zxvf $APP_NAME_$1.tar.gz
 echo "Done:  UNZIP the release"
 
