@@ -65,6 +65,12 @@ echo "******* Done:  mix test"
 
 echo ""
 
+echo "******* Start: rm rel directory"
+  rm -rf rel
+echo "******* Done:  rm rel directory"
+
+echo ""
+
 echo "******* Start: compile"
   MIX_ENV=prod mix compile
 echo "******* Done:  compile"
@@ -80,6 +86,18 @@ echo ""
 echo "******* Start: Build the release"
   MIX_ENV=prod mix release
 echo "******* Done:  Build the release"
+
+echo ""
+
+echo "******* Start: ensure releases directory"
+  # mkdir -p /releases_of_$1
+echo "******* Done:  ensure releases directory"
+
+echo ""
+
+echo "******* Start: copy the release tar file"
+  cp rel/$1/releases/$2/$1.tar.gz /releases_of_$1/$1_$2.tar.gz
+echo "******* Done:  copy the release tar file"
 
 echo ""
 echo ""
