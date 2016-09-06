@@ -27,47 +27,45 @@ source /exrmci/exrmci_env_vars
 
 echo "APP_NAME: $APP_NAME"
 echo "BUILD_RELEASE_DIR: $BUILD_RELEASE_DIR"
+echo "DEPLOY_RELEASE_DIR: $DEPLOY_RELEASE_DIR"
 echo "DEPLOY_ROOT_DIR: $DEPLOY_ROOT_DIR"
 
 # Make sure we have the required env vars.
 : ${APP_NAME?"         %%%%%%%%%%%%% Error: ENV VAR 'APP_NAME' NOT FOUND  %%%%%%%%%%%"}
-: ${BUILD_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'REPO_PATH' NOT FOUND  %%%%%%%%%%%"}
+: ${BUILD_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'BUILD_RELEASE_DIR' NOT FOUND  %%%%%%%%%%%"}
+: ${DEPLOY_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_RELEASE_DIR' NOT FOUND  %%%%%%%%%%%"}
 : ${DEPLOY_ROOT_DIR?"  %%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_ROOT' NOT FOUND  %%%%%%%%%%%"}
 
 
 
 echo ""
 
-echo "Start: get the release"
-  mkdir -p $DEPLOY_ROOT_DIR/releases/$1
-  scp $BUILD_RELEASE_DIR/$1/$APP_NAME.tar.gz $DEPLOY_ROOT_DIR/releases/$1/$APP_NAME.tar.gz
-echo "Done:  get the release"
+echo "Start: GET the release"
+  mkdir -p $DEPLOY_RELEASE_DIR
+  scp $BUILD_RELEASE_DIR/$APP_NAME_$1.tar.gz $DEPLOY_RELEASE_DIR/
+echo "Done:  GET the release"
 
 echo ""
 
-echo "Start: UPGRADE the release"
-  cd $DEPLOY_ROOT_DIR && ./bin/$APP_NAME upgrade  $1
-echo "Done:  UPGRADE the release"
+echo "Start: UNZIP the release"
+  cd $DEPLOY_ROOT_DIR
+  ./bin/$APP_NAME stop || true
+  rm -rf *
+  cp $DEPLOY_RELEASE_DIR/$APP_NAME_$1.tar.gz .
+  tar -zxvf $APP_NAME_$1.tar.gz
+echo "Done:  UNZIP the release"
+
+echo ""
+
+echo "Start: START the release"
+  RELX_REPLACE_OS_VARS=true ./bin/$APP_NAME start
+echo "Done:  START the release"
 
 
 echo ""
 echo ""
 
 exit 0
-
-
-
-
-######### EXAMPLE CODE ##########################################
-# /apps/pxblog-exrm/bin/pxblog upgrade 0.0.2
-# /apps/pxblog-exrm/bin/pxblog downgrade 0.0.1
-#    mix release
-#    mkdir -p /tmp/test/releases/0.0.2
-#    cp rel/test/releases/0.0.2/test.tar.gz /tmp/test/releases/0.0.2/
-#    cd /tmp/test
-#    bin/test upgrade "0.0.2"
-#################################################################
-
 
 
 
