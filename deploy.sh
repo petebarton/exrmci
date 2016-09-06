@@ -51,7 +51,8 @@ echo "Start: UNZIP the release"
   ./bin/$APP_NAME stop || true
   rm -rf *
   cp $DEPLOY_RELEASE_DIR/$(echo $APP_NAME)_$1.tar.gz .
-  tar -zxvf $APP_NAME_$1.tar.gz
+  tar -zxvf $(echo $APP_NAME)_$1.tar.gz
+  cd $DEPLOY_RELEASE_DIR/$(echo $APP_NAME)_$1
 echo "Done:  UNZIP the release"
 
 echo ""
