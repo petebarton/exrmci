@@ -30,10 +30,16 @@ echo "DEPLOY_RELEASE_DIR: $DEPLOY_RELEASE_DIR"
 echo "DEPLOY_ROOT_DIR: $DEPLOY_ROOT_DIR"
 
 # Make sure we have the required env vars.
-: ${APP_NAME?"         %%%%%%%%%%%%% Error: ENV VAR 'APP_NAME' NOT FOUND  %%%%%%%%%%%"}
-: ${BUILD_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'BUILD_RELEASE_DIR' NOT FOUND  %%%%%%%%%%%"}
+: ${APP_NAME?"          %%%%%%%%%%%%% Error: ENV VAR 'APP_NAME'           NOT FOUND  %%%%%%%%%%%"}
+: ${BUILD_RELEASE_DIR?" %%%%%%%%%%%%% Error: ENV VAR 'BUILD_RELEASE_DIR'  NOT FOUND  %%%%%%%%%%%"}
 : ${DEPLOY_RELEASE_DIR?"%%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_RELEASE_DIR' NOT FOUND  %%%%%%%%%%%"}
-: ${DEPLOY_ROOT_DIR?"  %%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_ROOT' NOT FOUND  %%%%%%%%%%%"}
+: ${DEPLOY_ROOT_DIR?"   %%%%%%%%%%%%% Error: ENV VAR 'DEPLOY_ROOT'        NOT FOUND  %%%%%%%%%%%"}
+                                                                             
+: ${PGUSER?"            %%%%%%%%%%%%% Error: ENV VAR 'PGUSER'             NOT FOUND  %%%%%%%%%%%"}
+: ${PGPASSWORD?"        %%%%%%%%%%%%% Error: ENV VAR 'PGPASSWORD'         NOT FOUND  %%%%%%%%%%%"}
+: ${PGHOST?"            %%%%%%%%%%%%% Error: ENV VAR 'PGHOST'             NOT FOUND  %%%%%%%%%%%"}
+: ${PGDBNAME?"          %%%%%%%%%%%%% Error: ENV VAR 'PGDBNAME'           NOT FOUND  %%%%%%%%%%%"}
+
 
 
 
