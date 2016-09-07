@@ -1,3 +1,18 @@
+
+
+################################################
+##                                            ##
+##            !!! IMPORTANT  !!!              ##
+##                                            ##
+## These environment variables are now        ##
+## expected to be set before deploy.sh runs.  ##
+##                                            ##
+## You can put them in .bashrc, etc.          ##
+##                                            ##
+################################################
+
+
+
 ############################# EXAMPLE #################################
 ## APP_NAME=my_app                                                   ##
 ##                                                                   ##

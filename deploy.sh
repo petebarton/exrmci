@@ -21,9 +21,6 @@ set -e
 # Make sure we have the required arg.
 : ${1?"%%%%%%%%%%%%% Error: version (git describe) must be passed as first arg. %%%%%%%%%%%"}
 
-# Run the env_vars file.
-source /exrmci/exrmci_env_vars
-
 echo "APP_NAME: $APP_NAME"
 echo "BUILD_RELEASE_DIR: $BUILD_RELEASE_DIR"
 echo "DEPLOY_RELEASE_DIR: $DEPLOY_RELEASE_DIR"
