@@ -42,19 +42,19 @@ echo "******* Done:  Git checkout correct version..."
 echo ""
 
 echo "******* Start: install rebar"
-  mix local.rebar --force && true
+  MIX_ENV=prod mix local.rebar --force && true
 echo "******* Done:  install rebar"
 
 echo ""
 
 echo "******* Start: mix clean"
-  mix clean
+  MIX_ENV=prod mix clean
 echo "******* Done:  mix clean"
 
 echo ""
 
 echo "******* Start: get the deps"
-  mix deps.get
+  MIX_ENV=prod mix deps.get
 echo "******* Done:  get the deps"
 
 echo ""
