@@ -59,6 +59,12 @@ echo "******* Done:  get the deps"
 
 echo ""
 
+echo "******* Start: webpack"
+  webpack
+echo "******* Done:  webpack"
+
+echo ""
+
 echo "******* Start: mix test"
   mix test
 echo "******* Done:  mix test"
