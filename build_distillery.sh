@@ -95,7 +95,7 @@ echo "******* Done:  distillery init"
 echo ""
 
 echo "******* Start: Build the release"
-  MIX_ENV=prod mix release
+  MIX_ENV=prod mix release --env=prod
 echo "******* Done:  Build the release"
 
 echo ""
