@@ -61,7 +61,7 @@ echo ""
 
 echo "Start: START the release"
   cd $DEPLOY_ROOT_DIR
-  RELX_REPLACE_OS_VARS=true ./bin/$APP_NAME start
+  RELX_REPLACE_OS_VARS=true REPLACE_OS_VARS=true ./bin/$APP_NAME start
 echo "Done:  START the release"
 
 
