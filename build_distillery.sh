@@ -108,7 +108,7 @@ echo ""
 
 echo "******* Start: copy the release tar file"
 git_describe=$(git describe)
-cp rel/$1/releases/$git_describe/$1.tar.gz /releases_of_$1/$1_$git_describe.tar.gz
+(cp rel/$1/releases/$git_describe/$1.tar.gz /releases_of_$1/$1_$git_describe.tar.gz) || (cp _build/prod/rel/$1/releases/$git_describe/$1.tar.gz /releases_of_$1/$1_$git_describe.tar.gz)
 echo "******* Done:  copy the release tar file"
 
 echo ""
