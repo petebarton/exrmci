@@ -30,7 +30,7 @@ echo ""
 echo ""
 
 echo "******* Start:  Git pull"
-  cd /$1 && sudo git checkout master && sudo git checkout . && sudo git pull
+cd /$1 && sudo git checkout master && rm -rf deps/* && sudo git checkout . && sudo git pull
 echo "******* Done:  Git pull."
 
 echo ""
