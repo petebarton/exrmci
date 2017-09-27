@@ -69,7 +69,7 @@ echo ""
 
 echo "Start: PING the running release"
   cd $DEPLOY_ROOT_DIR
-  sleep 2
+  sleep 9
   ./bin/$APP_NAME ping
 echo "Done:  PING the running release"
 
