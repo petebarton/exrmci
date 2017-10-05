@@ -59,6 +59,12 @@ echo "******* Done:  get the deps"
 
 echo ""
 
+echo "******* Start: remove previously webpacked and digested javascript"
+  rm -rf priv/static/js/wp/* && true
+echo "******* Done: remove previously webpacked and digested javascript"
+
+echo ""
+
 echo "******* Start: webpack"
   webpack
 echo "******* Done:  webpack"
